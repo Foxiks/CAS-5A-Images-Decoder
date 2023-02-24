@@ -35,7 +35,7 @@ while True:
 			d1 = str(d0).replace("dbdc", "c0")
 			d2 = str(d1).replace("dcdd","db")
 			d3 = str(d2).replace("dbdd","db")
-			with open('out_iamge_'+str(n)+'.jpg', 'ab') as out_file:
+			with open('out_image_'+str(n)+'.jpg', 'ab') as out_file:
 				bitstring.BitArray(hex=str(d3)).tofile(out_file)
 			c+=1
 			print('New image frame! '+str(c) + ' [First frame received!]'+str(''*130), end='\r')
