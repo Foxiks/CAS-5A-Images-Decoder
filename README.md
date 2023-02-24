@@ -8,7 +8,7 @@ Before use, specify the port for KISS Server in your soudmodem settings. Setting
 
 ![2](https://github.com/Foxiks/xw-3-images-decoder/blob/main/img/2.png)
 
-After that run start.bat for Windows or:
+After that, run:
 ```sh
 TCP-CAS-5A_Decoder.exe -p (--port) 8100 -ip 127.0.0.1 -o out.png
 ```
