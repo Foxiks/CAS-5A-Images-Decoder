@@ -1,7 +1,7 @@
 # CAS-5A (FO-118) Satellite Images decoder
 This is an CAS-5A (FO-118) Satellite Images decoder that works in conjunction with HS_soundmodem 
 
-![1](https://github.com/Foxiks/CAS-5A-Images-Decoder/blob/main/img/1.png)
+![1](https://github.com/Foxiks/CAS-5A-Images-Decoder/blob/main/img/1.jpg)
 
 ## Using
 Before use, specify the port for KISS Server in your soudmodem settings. Settings->Devices->KISS Server port
