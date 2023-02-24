@@ -10,11 +10,11 @@ Before use, specify the port for KISS Server in your soudmodem settings. Setting
 
 After that, run:
 ```sh
-TCP-CAS-5A_Decoder.exe -p (--port) 8100 -ip 127.0.0.1 -o out.png
+TCP-CAS-5A_Decoder.exe -p (--port) 8100 -ip 127.0.0.1
 ```
 or
 ```sh
-python TCP-CAS-5A_Decoder.py -p (--port) 8100 -ip 127.0.0.1 -o out.png
+python TCP-CAS-5A_Decoder.py -p (--port) 8100 -ip 127.0.0.1
 ```
 
 Mode for sondmodem: FSK G3RUH 4800bd.
