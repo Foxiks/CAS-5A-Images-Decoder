@@ -38,7 +38,6 @@ while True:
 			d2 = str(d1).replace("dc dd","db")
 			d3 = str(d2).replace("db dd","db")
 			d3 = d3.replace(' ', '')
-			print(len(d3))
 			with open('out_image_'+str(n)+'.jpg', 'ab') as out_file:
 				bitstring.BitArray(hex=str(d3)).tofile(out_file)
 			c+=1
@@ -48,7 +47,6 @@ while True:
 			d1 = str(d0).replace("db dc", "c0")
 			d2 = str(d1).replace("dc dd","db")
 			d3 = str(d2).replace("db dd","db")
-			print(len(d3))
 			d3 = d3.replace(' ', '')
 			with open('out_image_'+str(n)+'.jpg', 'ab') as out_file:
 				bitstring.BitArray(hex=str(d3)).tofile(out_file)
