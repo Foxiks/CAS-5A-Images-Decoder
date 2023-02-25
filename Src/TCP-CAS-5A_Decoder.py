@@ -27,23 +27,29 @@ print('Connected to ' + str(remote_ip) + ":" + str(port))
 print("")
 while True:
 	reply = s.recv(4096).hex()
-	if(str(reply[:50]) != "c00086a240404040608682a66a82406103f0010001000100a7"):
-		if(int(str(reply[36:]).find('ffd8')) >= int(0)):
+	reply = [reply[i:i+2] for i in range(0, len(reply), 2)]
+	reply = ' '.join(reply)
+	if(len(reply[54:]) > 510):
+		if(int(str(reply[54:]).find('ff d8')) >= int(0)):
 			sync_f = 't'
 			n = datetime.now().strftime('%H_%M_%S')
-			d0 = str(reply)[36:-2]
-			d1 = str(d0).replace("dbdc", "c0")
-			d2 = str(d1).replace("dcdd","db")
-			d3 = str(d2).replace("dbdd","db")
+			d0 = str(reply)[54:-3]
+			d1 = str(d0).replace("db dc", "c0")
+			d2 = str(d1).replace("dc dd","db")
+			d3 = str(d2).replace("db dd","db")
+			d3 = d3.replace(' ', '')
+			print(len(d3))
 			with open('out_image_'+str(n)+'.jpg', 'ab') as out_file:
 				bitstring.BitArray(hex=str(d3)).tofile(out_file)
 			c+=1
 			print('New image frame! '+str(c) + ' [First frame received!]'+str(''*130), end='\r')
-		if(int(str(reply[36:]).find('ffd8')) < int(0)):
-			d0 = str(reply)[36:-2]
-			d1 = str(d0).replace("dbdc", "c0")
-			d2 = str(d1).replace("dcdd","db")
-			d3 = str(d2).replace("dbdd","db")
+		if(int(str(reply[54:]).find('ff d8')) < int(0)):
+			d0 = str(reply)[54:-3]
+			d1 = str(d0).replace("db dc", "c0")
+			d2 = str(d1).replace("dc dd","db")
+			d3 = str(d2).replace("db dd","db")
+			print(len(d3))
+			d3 = d3.replace(' ', '')
 			with open('out_image_'+str(n)+'.jpg', 'ab') as out_file:
 				bitstring.BitArray(hex=str(d3)).tofile(out_file)
 			c+=1
@@ -51,7 +57,7 @@ while True:
 				print('New image frame! '+str(c) + ' [First frame received!]'+str(''*130), end='\r')
 			else:
 				print('New image frame! '+str(c) + ''' [You didn't get the sync word for the photo. This means that you will not be able to view the photo. Try to get another photo...]''', end='\r')
-	if(str(reply[:50]) == "c00086a240404040608682a66a82406103f0010001000100a7"):
+	if(len(reply[54:]) <= 510):
 		print('Telemetry frame! Skip...'+str(' '*145), end='\r')
 		n = datetime.now().strftime('%H_%M_%S')
 		c=0
