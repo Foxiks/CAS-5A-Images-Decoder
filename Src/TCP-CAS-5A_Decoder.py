@@ -3,8 +3,8 @@ from datetime import datetime
 parser = argparse.ArgumentParser()
 parser.add_argument("-p", "--port", help="port")
 parser.add_argument("-ip", "--ip", help="ip")
-ip = '127.0.0.1'
-port1 = 8100
+ip = parser.parse_args().ip
+port1 = parser.parse_args().port
 port = int(port1)
 err = 0
 c_num = 0
@@ -117,7 +117,7 @@ while True:
 			c_num = int(frame_number)
 			print('RX Mode: '+rx+' | Total frames: '+str(total_frames)+' | Frame number: '+str(frame_number)+' | Total frames loss: '+str(err)+' | Frame length: '+str(frame_length)+' | Photo time: 20'+str(frame_y)+'.'+str(frame_m)+'.'+str(frame_d)+' '+str(frame_H)+':'+str(frame_MIN)+':'+str(frame_S)+' | Camera number: '+str(camera_number)+' | Photo counter: '+str(photo_counter)+' | Resolution: '+str(resolution)+' | Quality: '+str(quality)+str(' '*4), end='\r')
 	if(len(reply) <= 510):
-		print('Telemetry frame! Skip...'+str(' '*236), end='\r')
+		print('Telemetry frame! Skip...'+str(' '*228), end='\r')
 		n = datetime.now().strftime('%H_%M_%S')
 		c=0
 		sync_f = 'n'
